@@ -1,7 +1,4 @@
 module.exports = {
-  /*
-  ** Headers of the page
-  */
   head: {
     title: '{{ name }}',
     meta: [
@@ -13,17 +10,26 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-  /*
-  ** Customize the progress bar color
-  */
-  loading: { color: '#3B8070' },
-  /*
-  ** Build configuration
-  */
+  css: [
+    'vue-flexboxgrid/dist/vue-flexboxgrid.css',
+    '@/assets/scss/app.scss'
+  ],
+  loading: {
+    color: '#744d82'
+  },
+  plugins: [
+    '@/plugins/flexboxgrid.js'
+  ],
+  modules: [
+    '@nuxtjs/axios'
+  ],
+  // Axios options (https://axios.nuxtjs.org/options.html)
+  axios: {
+    prefix: '/api',
+    browserBaseURL: '/api',
+    credentials: true
+  },
   build: {
-    /*
-    ** Run ESLint on save
-    */
     extend (config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({
